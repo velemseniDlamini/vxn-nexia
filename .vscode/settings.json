@@ -1,0 +1,25 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "html"
+  },
+  "tailwindCSS.experimental": {
+    "classRegex": [
+      ["@apply\\([^;]*\\)", "([^;]*)"],
+      ["@apply\\s+([^;]*)", "'\"]([^'\"]+)['\"]"]
+    ]
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "json.schemaValidation.enable": false,
+  "json.schemas": [],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": "explicit"
+  },
+  "json.schemaDownload.enable": false
+}
