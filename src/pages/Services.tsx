@@ -1,4 +1,4 @@
-import { Code, Smartphone, Server, Globe, Zap, Shield, Layers, Settings } from 'lucide-react';
+import { Code, Smartphone, Globe, Zap, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
@@ -25,30 +25,6 @@ const services = [
       'Offline Functionality',
       'Push Notifications',
       'App Store Deployment',
-    ],
-  },
-  {
-    title: 'Cloud & DevOps',
-    description:
-      'Cloud infrastructure setup, CI/CD pipelines, and DevOps practices to streamline your development process.',
-    icon: <Server className="h-8 w-8 text-primary" />,
-    features: [
-      'AWS/GCP/Azure',
-      'Docker & Kubernetes',
-      'CI/CD Pipelines',
-      'Infrastructure as Code',
-    ],
-  },
-  {
-    title: 'UI/UX Design',
-    description:
-      'Beautiful and intuitive user interfaces that provide exceptional user experiences.',
-    icon: <Layers className="h-8 w-8 text-primary" />,
-    features: [
-      'User Research',
-      'Wireframing & Prototyping',
-      'UI/UX Audits',
-      'Design Systems',
     ],
   },
   {

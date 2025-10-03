@@ -42,20 +42,12 @@ export function generateId(): string {
   return Math.random().toString(36).substring(2, 9);
 }
 
-/**
- * Debounce a function call
- * @param func - Function to debounce
- * @param wait - Time to wait in milliseconds
- * @returns Debounced function
- */
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
+/** Debounce a function call */
+export function debounce<T extends (...args: any[]) => any>(func: T, wait: number) {
   let timeout: NodeJS.Timeout;
-  return function (this: any, ...args: Parameters<T>) {
+  return (...args: Parameters<T>) => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), wait);
+    timeout = setTimeout(() => func(...args), wait);
   };
 }
 

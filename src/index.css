@@ -87,6 +87,7 @@
     letter-spacing: -0.025em;
     line-height: 1.2;
     color: hsl(var(--foreground));
+    border: none !important;
   }
   
   h1 { 
@@ -121,6 +122,7 @@
     color: hsl(var(--muted-foreground));
     font-size: 1.05rem;
     line-height: 1.7;
+    border: none !important;
   }
   
   a {
@@ -707,7 +709,6 @@ button:focus-visible, [type='button']:focus-visible, [type='reset']:focus-visibl
 
 @layer base {
   * {
-    @apply border;
     border-color: hsl(var(--border));
   }
   body {
@@ -1029,4 +1030,229 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Hero Section Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientX {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounceX {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-gradient-x {
+  animation: gradientX 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 8s linear infinite;
+}
+
+.animate-bounce-x {
+  animation: bounceX 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Delay classes */
+.delay-200 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+.delay-900 {
+  animation-delay: 0.9s;
+  opacity: 0;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Typing Animation for Code */
+@keyframes typing {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes float1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+@keyframes cursorBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Typing animation classes - Infinite loop */
+.typing-animation-1 {
+  animation: typing 8s ease-in-out 1s infinite;
+  opacity: 0;
+}
+
+.typing-animation-2 {
+  animation: typing 8s ease-in-out 1.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-3 {
+  animation: typing 8s ease-in-out 2s infinite;
+  opacity: 0;
+}
+
+.typing-animation-4 {
+  animation: typing 8s ease-in-out 2.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-5 {
+  animation: typing 8s ease-in-out 3s infinite;
+  opacity: 0;
+}
+
+.typing-animation-6 {
+  animation: typing 8s ease-in-out 3.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-7 {
+  animation: typing 8s ease-in-out 4s infinite;
+  opacity: 0;
+}
+
+.typing-animation-8 {
+  animation: typing 8s ease-in-out 4.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-9 {
+  animation: typing 8s ease-in-out 5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-10 {
+  animation: typing 8s ease-in-out 5.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-11 {
+  animation: typing 8s ease-in-out 6s infinite;
+  opacity: 0;
+}
+
+.typing-animation-12 {
+  animation: typing 8s ease-in-out 6.5s infinite;
+  opacity: 0;
+}
+
+.typing-animation-13 {
+  animation: typing 8s ease-in-out 7s infinite;
+  opacity: 0;
+}
+
+/* Float animations */
+.animate-float-1 {
+  animation: float1 3s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float2 4s ease-in-out infinite;
+}
+
+/* Cursor blink */
+.cursor-blink {
+  animation: cursorBlink 1s infinite;
 }
