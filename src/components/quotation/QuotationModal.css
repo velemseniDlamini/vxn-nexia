@@ -1,0 +1,16 @@
+/* QuotationModal specific styles */
+.quotation-modal-overlay {
+  z-index: 99999;
+}
+
+.quotation-modal-backdrop {
+  z-index: 99998;
+}
+
+.quotation-modal-container {
+  z-index: 100000;
+}
+
+.quotation-modal-content {
+  z-index: 100001;
+}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import { QuotationModal } from '../quotation/QuotationModal';
 
 type NavItem = {
   name: string;
@@ -11,6 +12,7 @@ type NavItem = {
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isQuotationModalOpen, setIsQuotationModalOpen] = useState(false);
   const location = useLocation();
   
   const navigation: NavItem[] = [
@@ -54,12 +56,12 @@ export const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Link
-            to="/contact"
+          <button
+            onClick={() => setIsQuotationModalOpen(true)}
             className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-primary to-primary-hover px-6 py-2.5 text-sm font-medium text-primary-foreground hover:shadow-lg hover:scale-105 transition-all duration-300 shadow-md"
           >
-            Get in Touch
-          </Link>
+            Get Quotation
+          </button>
         </div>
 
         {/* Mobile menu button */}
@@ -97,15 +99,21 @@ export const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link
-              to="/contact"
+            <button
+              onClick={() => setIsQuotationModalOpen(true)}
               className="mt-4 block w-full rounded-lg bg-gradient-to-r from-primary to-primary-hover px-4 py-3 text-center text-sm font-medium text-primary-foreground hover:shadow-lg transition-all duration-300 shadow-md"
             >
-              Get in Touch
-            </Link>
+              Get Quotation
+            </button>
           </div>
         </div>
       )}
+      
+      {/* Quotation Modal */}
+      <QuotationModal 
+        isOpen={isQuotationModalOpen} 
+        onClose={() => setIsQuotationModalOpen(false)} 
+      />
     </header>
   );
 };
