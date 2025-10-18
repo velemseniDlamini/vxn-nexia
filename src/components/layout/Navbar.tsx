@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 import { QuotationModal } from '../quotation/QuotationModal';
 
@@ -32,8 +32,20 @@ export const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 shadow-sm">
       <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">VXN-Nexia</span>
+          <Link to="/" className="flex items-center space-x-2 group">
+            <img 
+              src="/images/vxn-nexia-logo.png" 
+              alt="VXN-Nexia Logo" 
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <span className="hidden text-xl font-bold bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+              VXN-Nexia
+            </span>
           </Link>
         </div>
 

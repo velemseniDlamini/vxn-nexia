@@ -3,6 +3,22 @@ import { ArrowRight, Code, Globe, Server, Smartphone } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Helper function to get category icons
+const getCategoryIcon = (category?: string) => {
+  switch (category) {
+    case 'Education & Student Services':
+      return '🎓';
+    case 'Hospitality & Real Estate':
+      return '🏨';
+    case 'Healthcare & Wellness':
+      return '🏥';
+    case 'Professional Services & SMEs':
+      return '💼';
+    default:
+      return '💻';
+  }
+};
+
 type ServiceCardProps = {
   icon: React.ReactNode;
   title: string;
@@ -10,19 +26,49 @@ type ServiceCardProps = {
 };
 
 const ServiceCard = ({ icon, title, description }: ServiceCardProps) => (
-  <div className="group relative overflow-hidden rounded-xl bg-card p-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-0">
-    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  <div className="group relative overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm p-8 shadow-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-4 border border-border/20 hover:border-primary/30">
+    {/* Animated Background Gradients */}
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100"></div>
+    
+    {/* Floating Elements */}
+    <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-150"></div>
+    <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"></div>
+    
     <div className="relative z-10">
-      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-hover text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
-        {icon}
+      {/* Enhanced Icon Container */}
+      <div className="mb-8 relative">
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary via-primary-hover to-primary/80 text-white shadow-2xl group-hover:shadow-primary/25 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+          <div className="transition-transform duration-300 group-hover:scale-110">
+            {icon}
+          </div>
+        </div>
+        {/* Icon Glow Effect */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary to-primary-hover opacity-0 group-hover:opacity-20 blur-xl transition-all duration-500 group-hover:scale-125"></div>
       </div>
-      <h3 className="mb-3 text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">{title}</h3>
-      <p className="text-muted-foreground leading-relaxed mb-6">{description}</p>
-      <div className="flex items-center text-primary font-medium group-hover:translate-x-2 transition-transform duration-300">
-        <span className="text-sm">Learn more</span>
-        <ArrowRight className="ml-2 h-4 w-4 group-hover:ml-3 transition-all duration-300" />
+      
+      {/* Enhanced Typography */}
+      <h3 className="mb-4 text-2xl font-bold text-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1">
+        {title}
+      </h3>
+      <p className="text-muted-foreground leading-relaxed mb-8 text-base group-hover:text-foreground/80 transition-colors duration-300">
+        {description}
+      </p>
+      
+      {/* Enhanced CTA with Animation */}
+      <div className="flex items-center text-primary font-semibold group-hover:translate-x-3 transition-all duration-300 cursor-pointer">
+        <span className="text-sm tracking-wide">Learn more</span>
+        <div className="ml-3 flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+          <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+        </div>
       </div>
+      
+      {/* Progress Bar Animation */}
+      <div className="mt-6 h-1 w-0 bg-gradient-to-r from-primary to-primary-hover rounded-full group-hover:w-full transition-all duration-700 delay-200"></div>
     </div>
+    
+    {/* Shimmer Effect */}
+    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12"></div>
   </div>
 );
 
@@ -31,15 +77,41 @@ type ProjectCardProps = {
   description: string;
   tags: string[];
   demoUrl: string;
+  image?: string;
+  category?: string;
 };
 
-const ProjectCard = ({ title, description, tags, demoUrl }: ProjectCardProps) => (
-  <div className="overflow-hidden rounded-lg bg-card shadow-sm transition-all hover:shadow-md">
-    <div className="h-48 bg-muted/50">
-      {/* Placeholder for project image */}
-      <div className="flex h-full items-center justify-center text-muted-foreground">
-        Live Demo Preview
-      </div>
+const ProjectCard = ({ title, description, tags, demoUrl, image, category }: ProjectCardProps) => (
+  <div className="group overflow-hidden rounded-xl bg-card shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-border/50">
+    <div className="relative h-48 overflow-hidden">
+      {image ? (
+        <>
+          <img 
+            src={image} 
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+              target.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <div className="hidden h-full w-full bg-gradient-to-br from-primary/20 to-secondary/20" style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <div className="text-center">
+              <div className="text-4xl mb-2">{getCategoryIcon(category)}</div>
+              <div className="text-sm font-medium text-muted-foreground">Demo Preview</div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="h-full w-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-4xl mb-2">{getCategoryIcon(category)}</div>
+            <div className="text-sm font-medium text-muted-foreground">Demo Preview</div>
+          </div>
+        </div>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
     <div className="p-6">
       <div className="mb-3 flex flex-wrap gap-2">
@@ -97,12 +169,16 @@ export const Home = () => {
           description: 'Complete booking system with application forms, virtual tours, and payment integration.',
           tags: ['React', 'Booking System', 'Payments'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=400&h=300&fit=crop&crop=center',
+          category: 'Education & Student Services',
         },
         {
           title: 'Private School Website',
           description: 'Modern school website with admissions portal, events calendar, and parent communication.',
           tags: ['Next.js', 'CMS', 'Mobile App'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=300&fit=crop&crop=center',
+          category: 'Education & Student Services',
         },
       ],
     },
@@ -115,12 +191,16 @@ export const Home = () => {
           description: 'Elegant website with online booking, virtual tours, and WhatsApp integration.',
           tags: ['Booking System', 'Virtual Tours', 'WhatsApp'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=400&h=300&fit=crop&crop=center',
+          category: 'Hospitality & Real Estate',
         },
         {
           title: 'Real Estate Agency',
           description: 'Property showcase with advanced search, virtual tours, and lead generation.',
           tags: ['Property Search', 'Lead Gen', 'Mobile'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop&crop=center',
+          category: 'Hospitality & Real Estate',
         },
       ],
     },
@@ -133,12 +213,16 @@ export const Home = () => {
           description: 'Professional clinic website with appointment booking and patient portal.',
           tags: ['Appointment System', 'Patient Portal', 'HIPAA'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&crop=center',
+          category: 'Healthcare & Wellness',
         },
         {
           title: 'Fitness Studio App',
           description: 'Mobile app for class booking, progress tracking, and member communication.',
           tags: ['Mobile App', 'Booking', 'Progress Tracking'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center',
+          category: 'Healthcare & Wellness',
         },
       ],
     },
@@ -151,12 +235,16 @@ export const Home = () => {
           description: 'Professional website with case studies, consultation booking, and client portal.',
           tags: ['Lead Generation', 'Consultation Booking', 'CRM'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=300&fit=crop&crop=center',
+          category: 'Professional Services & SMEs',
         },
         {
           title: 'Plumbing Service Portal',
           description: 'Service website with quote requests, emergency booking, and customer reviews.',
           tags: ['Quote System', 'Emergency Booking', 'Reviews'],
           demoUrl: '#',
+          image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=300&fit=crop&crop=center',
+          category: 'Professional Services & SMEs',
         },
       ],
     },
@@ -165,7 +253,7 @@ export const Home = () => {
   return (
     <div className="flex-1">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 md:py-32 border-0 min-h-[80vh] flex items-center">
+      <section className="relative overflow-hidden py-12 md:py-20 border-0 min-h-[70vh] flex items-center">
         {/* Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-primary/5 to-transparent"></div>
@@ -226,7 +314,7 @@ export const Home = () => {
             {/* Right Column - Animated Code Illustration */}
             <div className="relative animate-fade-in-up delay-1000">
               {/* Code Editor Window */}
-              <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-border/50 overflow-hidden h-[400px] ml-[50px] -mt-[30px]">
+              <div className="relative bg-card/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-border/50 overflow-hidden h-[400px]">
                 {/* Window Header */}
                 <div className="flex items-center justify-between px-6 py-4 bg-muted/50 border-b border-border/50">
                   <div className="flex items-center space-x-2">
@@ -343,7 +431,7 @@ export const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section className="relative py-20 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/3 via-background to-secondary/5"></div>
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
@@ -361,16 +449,21 @@ export const Home = () => {
             </p>
           </div>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, index) => (
-              <Link key={index} to="/services" className="block">
-                <ServiceCard
-                  icon={service.icon}
-                  title={service.title}
-                  description={service.description}
-                />
-              </Link>
-            ))}
+          <div className="mt-20 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {services.map((service, index) => {
+              const delayClass = `delay-${(index + 1) * 200}`;
+              return (
+                <div key={index} className={`animate-fade-in-up ${delayClass}`}>
+                  <Link to="/services" className="block group/link">
+                    <ServiceCard
+                      icon={service.icon}
+                      title={service.title}
+                      description={service.description}
+                    />
+                  </Link>
+                </div>
+              );
+            })}
           </div>
           
           <div className="mt-16 text-center">
@@ -426,6 +519,8 @@ export const Home = () => {
                       description={project.description}
                       tags={project.tags}
                       demoUrl={project.demoUrl}
+                      image={project.image}
+                      category={project.category}
                     />
                   ))}
                 </div>
@@ -444,7 +539,7 @@ export const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24">
+      <section className="py-12 md:py-20">
         <div className="container px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl bg-primary/5 p-8 text-center md:p-12">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

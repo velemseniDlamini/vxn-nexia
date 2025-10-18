@@ -1,0 +1,38 @@
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#FF7F00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DAA520;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#B8860B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B7355;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- V -->
+  <path d="M20 20 L35 80 L50 20" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- X -->
+  <path d="M70 20 L100 80 M100 20 L70 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- N -->
+  <path d="M120 20 L120 80 M120 20 L150 80 M150 20 L150 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- - -->
+  <path d="M170 50 L190 50" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- N -->
+  <path d="M210 20 L210 80 M210 20 L240 80 M240 20 L240 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- E -->
+  <path d="M260 20 L260 80 M260 20 L290 20 M260 50 L285 50 M260 80 L290 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- X -->
+  <path d="M310 20 L340 80 M340 20 L310 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- I -->
+  <path d="M360 20 L360 80" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  
+  <!-- A -->
+  <path d="M380 80 L390 20 L400 80 M385 55 L395 55" stroke="url(#logoGradient)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
